@@ -8,13 +8,14 @@ const getRecipeByIndex = (request, response) => {
   read('data.json', (jsonObjectData) => {
     const countRecipes = jsonObjectData.recipes.length;
     console.log(`Count: ${countRecipes}`);
-    if (request.index >= countRecipes)
+    const requestedIndex = request.params.index;
+    if (requestedIndex >= countRecipes)
     {
-      response.send(`Invalid index. There are only ${countRecipes} recipes available.`);
+      response.set(404).send(`Sorry, we cannot find that!. There are only ${countRecipes} recipes available.`);
       return;
     }
-    console.log('jsonObjectData.recipes[request.index]: ', jsonObjectData.recipes[request.params.index]);
-    response.send(jsonObjectData.recipes[request.params.index]);
+    console.log('jsonObjectData.recipes[request.index]: ', jsonObjectData.recipes[requestedIndex]);
+    response.send(jsonObjectData.recipes[requestedIndex]);
   });
 };
 
