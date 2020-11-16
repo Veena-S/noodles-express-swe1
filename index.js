@@ -6,6 +6,12 @@ let recipeListByCategory = [];
 const app = express();
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
+// To create a virtual path prefix
+// http://localhost:3004/static/style.css
+// app.use('/static', express.static('public'));
+
 const getAllRecipes = (request, response) => {
   read('data.json', (jsonObjectData) => {
     console.log('file read completed');
