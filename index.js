@@ -84,11 +84,13 @@ const getRecipeByCategory = (request, response) => {
     const requestedCategory = request.params.category.toLowerCase();
     // Create the list of recipes that matches the specified label
     recipeListByCategory = [];
-    jsonObjectData.recipes.forEach((element) => {
+    jsonObjectData.recipes.forEach((element, index) => {
       if (element.category && (element.category.toLowerCase() === requestedCategory)) {
         if (element.label)
         {
-          recipeListByCategory.push(element.label);
+          element.index = index;
+          // recipeListByCategory.push(element.label);
+          recipeListByCategory.push(element);
         }
       }
     });

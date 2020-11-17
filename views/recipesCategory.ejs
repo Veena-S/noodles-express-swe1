@@ -45,8 +45,10 @@
         <div class="col-md-4 col-sm-12">
           <h4>Recipes</h4>
           <ul>
-            <% recipeList.forEach(( element, index ) => {%>
-            <li><a href="recipe/<%=index%>"><%=element%></a></li>
+            <% recipeList.forEach(( recipeData ) => {%>
+            <li>
+              <a href="/recipe/<%=recipeData.index%>"><%=recipeData.label%></a>
+            </li>
             <% }); %>
           </ul>
         </div>
